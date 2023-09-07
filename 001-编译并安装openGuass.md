@@ -537,7 +537,7 @@ alternatives --config python
 export CPLUS_INCLUDE_PATH="/usr/include/python3.m"
 ```
 
-**注：坑8: 改变了LD_LIBRARY_PATH后会导致yum用不了**
+**注：坑8: 改变了LD_LIBRARY_PATH并且数据库成功编译后会导致yum用不了**
 
 ![image-20230728145915852](http://foolcorn-image.oss-cn-shenzhen.aliyuncs.com/img/image-20230728145915852.png)
 
@@ -545,7 +545,9 @@ export CPLUS_INCLUDE_PATH="/usr/include/python3.m"
 
 ![image-20230728150015983](http://foolcorn-image.oss-cn-shenzhen.aliyuncs.com/img/image-20230728150015983.png)
 
-解决办法就是把“/opt/opengauss/software/lib/libcurl.so.4”给删掉，这样系统自然会指向原来lib64下的libcurl.so.4
+解决办法就是把“/opt/opengauss/software/lib/libcurl.so.4”给删掉，这样系统自然会指向原来lib64下的libcurl.so.4。
+
+或者将/lib64/的路径加在LD_LIBRARY_PATH的最前面，也有同样的效果。
 
 **注：坑9: 2.0.0版本安装pljava的脚本有问题**
 
